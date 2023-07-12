@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-export function TodoCard({ index, todo }) {
+export function TodoCard({ index, todo, setTodos }) {
 	const [status, setStatus] = useState("Pending");
 
 	function updateStatus() {
@@ -10,6 +10,11 @@ export function TodoCard({ index, todo }) {
 		if (status === "Completed") {
 			setStatus("Pending");
 		}
+	}
+
+	function removeTodo() {
+		// Update the todos state by filtering out the todo with the current index
+		setTodos((prevTodos) => prevTodos.filter((prevTodo, i) => i !== index));
 	}
 
 	return (
@@ -33,6 +38,7 @@ export function TodoCard({ index, todo }) {
 					<button
 						type="button"
 						className=" w-full rounded-lg bg-[#3425AC] px-2 py-2.5 text-md font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+						onClick={removeTodo}
 					>
 						Remove
 					</button>
