@@ -11,15 +11,6 @@ const Form = () => {
 		setTodo(event.target.value);
 	};
 
-	// const handleSubmit = (event) => {
-	// 	event.preventDefault();
-
-	// 	setTodos((prevTodos) => {
-	// 		return [...prevTodos, todo];
-	// 	});
-	// 	setTodo("");
-	// };
-
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
@@ -52,7 +43,12 @@ const Form = () => {
 				</div>
 				<div className="flex flex-wrap justify-center items-center gap-20">
 					{todos.map((todo, index) => (
-						<TodoCard key={index} index={index} todo={todo} />
+						<TodoCard
+							key={index}
+							index={index}
+							todo={todo}
+							setTodos={setTodos}
+						/>
 					))}
 				</div>
 			</div>
